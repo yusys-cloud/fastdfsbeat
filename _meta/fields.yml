@@ -1,0 +1,9 @@
+- key: fastdfsbeat
+  title: fastdfsbeat
+  description:
+  fields:
+    - name: counter
+      type: long
+      required: true
+      description: >
+        PLEASE UPDATE DOCUMENTATION
