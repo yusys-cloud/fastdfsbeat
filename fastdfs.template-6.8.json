@@ -1,0 +1,28 @@
+{
+  "index_patterns": [
+    "fastdfsbeat-8.0.0-*"
+  ],
+  "order": 1,
+  "settings": {
+    "index": {
+      "lifecycle": {
+        "name": "fastdfsbeat",
+        "rollover_alias": "fastdfsbeat-8.0.0"
+      },
+      "mapping": {
+        "total_fields": {
+          "limit": 10000
+        }
+      },
+      "max_docvalue_fields_search": 200,
+      "query": {
+        "default_field": [
+          "message",
+          "fields.*"
+        ]
+      },
+      "refresh_interval": "5s",
+      "number_of_shards": 1
+    }
+  }
+}

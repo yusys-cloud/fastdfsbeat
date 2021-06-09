@@ -1,0 +1,64 @@
+{
+  "index_patterns": [
+    "fastdfsbeat-8.0.0-*"
+  ],
+  "mappings": {
+    "_meta": {
+      "beat": "fastdfsbeat",
+      "version": "8.0.0"
+    },
+    "date_detection": false,
+    "dynamic_templates": [
+      {
+        "fields": {
+          "mapping": {
+            "type": "keyword"
+          },
+          "match_mapping_type": "string",
+          "path_match": "fields.*"
+        }
+      },
+      {
+        "strings_as_keyword": {
+          "mapping": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "match_mapping_type": "string"
+        }
+      }
+    ],
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "counter": {
+        "type": "long"
+      }
+    }
+  },
+  "order": 1,
+  "settings": {
+    "index": {
+      "lifecycle": {
+        "name": "fastdfsbeat",
+        "rollover_alias": "fastdfsbeat-8.0.0"
+      },
+      "mapping": {
+        "total_fields": {
+          "limit": 10000
+        }
+      },
+      "max_docvalue_fields_search": 200,
+      "query": {
+        "default_field": [
+          "message",
+          "fields.*"
+        ]
+      },
+      "refresh_interval": "5s",
+      "number_of_replicas" : 0,
+      "number_of_shards": 1
+    }
+  }
+}
